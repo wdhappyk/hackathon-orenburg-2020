@@ -1,4 +1,4 @@
-<form [formGroup]="signInForm">
+<form [formGroup]="signInForm" (ngSubmit)="nextStep()">
   <h3 class="text-center font-weight-normal">Авторизация</h3>
   <p class="mat-small text-center line-height-normal">
     Введите номер телефона<br>
