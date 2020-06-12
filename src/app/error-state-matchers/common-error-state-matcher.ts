@@ -3,6 +3,7 @@ import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 
 export class CommonErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    return !!(control && control.value !== '' && control.invalid);
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
   }
 }
