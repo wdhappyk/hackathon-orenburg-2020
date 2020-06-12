@@ -1,0 +1,14 @@
+<h4>Авторизация</h4>
+<form [formGroup]="signInForm">
+  <h2>Авторизация</h2>
+  <p>Введите номер телефона и мы отправим на него код подтверждения</p>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Телефон" formControlName="phone"
+           [errorStateMatcher]="commonErrorStateMatcher" (change)="onPhoneChanged"
+    >
+    <mat-error>
+      Введте телефон
+    </mat-error>
+  </mat-form-field>
+
+</form>
