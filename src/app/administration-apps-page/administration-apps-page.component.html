@@ -2,7 +2,7 @@
   <h3>Текущие заявки</h3>
   <div>
     <mat-form-field class="mr-3">
-      <mat-label>Исполнитель</mat-label>
+      <mat-label>Заявитель</mat-label>
       <mat-select [formControl]="applicantsFormControl" multiple>
         <mat-option *ngFor="let contractor of applicantList" [value]="contractor">{{contractor}}</mat-option>
       </mat-select>
