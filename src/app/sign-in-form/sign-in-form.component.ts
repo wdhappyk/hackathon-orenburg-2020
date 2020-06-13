@@ -13,7 +13,7 @@ import { CodeInputTriggerService } from '../code-input/code-input-trigger.servic
 })
 export class SignInFormComponent implements OnInit {
   signInForm = this.fb.group({
-    phone: ['1234567890', [Validators.required, Validators.pattern(/\(\d{3}\)\s\d{3}-\d{2}-\d{2}/)]],
+    phone: ['(555) 555-12-34', [Validators.required, Validators.pattern(/\(\d{3}\)\s\d{3}-\d{2}-\d{2}/)]],
   });
   commonErrorStateMatcher = new CommonErrorStateMatcher();
 
