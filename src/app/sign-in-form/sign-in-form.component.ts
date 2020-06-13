@@ -22,6 +22,7 @@ export class SignInFormComponent implements OnInit {
   codeSize = 4;
   countToResendCode = 300;
   mask = ['(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
+  code = '';
 
   constructor(
     private fb: FormBuilder,
@@ -47,7 +48,7 @@ export class SignInFormComponent implements OnInit {
   }
 
   verifyCode() {
-    //...
+
   }
 
   onRecendCode() {
@@ -68,4 +69,8 @@ export class SignInFormComponent implements OnInit {
   }
 
 
+  setCode(code: string) {
+    this.code = code;
+    console.log(code);
+  }
 }

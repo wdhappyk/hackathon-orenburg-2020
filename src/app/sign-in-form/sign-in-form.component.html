@@ -31,13 +31,15 @@
         </mat-form-field>
       </div>
       <div class="flex-shrink-0 w-100">
-        <app-code-input [size]="codeSize" ></app-code-input>
+        <app-code-input [size]="codeSize" (valueChanged)="setCode($event)"></app-code-input>
       </div>
     </div>
   </div>
-
-  <button mat-raised-button color="primary" class="w-100 mt-1" type="submit">
-    {{ stepNumber === 0 ? 'Запросить код' : 'Отправить код' }}
+  <button *ngIf="stepNumber === 0" mat-raised-button color="primary" class="w-100 mt-1" type="submit">
+    Запросить код
+  </button>
+  <button *ngIf="stepNumber === 1" mat-raised-button color="primary" class="w-100 mt-1" type="submit" [disabled]="code.length !== codeSize">
+    Отправить код
   </button>
   <button mat-stroked-button class="w-100 mt-1" *ngIf="stepNumber > 0" [disabled]="countToResendCode > 0">
     Запросить код повторно<span *ngIf="countToResendCode > 0"> ({{countToResendCode}} сек.)</span>

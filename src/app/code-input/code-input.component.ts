@@ -1,4 +1,14 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  QueryList,
+  ViewChildren,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { CodeInputTriggerService } from './code-input-trigger.service';
 
@@ -12,6 +22,8 @@ export class CodeInputComponent implements OnInit {
   controls: FormControl[] = [];
   @ViewChildren('input') inputs: QueryList<ElementRef>;
 
+  @Output() valueChanged = new EventEmitter();
+
   @Input() set size(n) {
     if (n > this.controls.length) {
       const prevLen = this.controls.length;
@@ -19,6 +31,8 @@ export class CodeInputComponent implements OnInit {
       this.controls.push(...newControls);
       newControls.forEach((control, idx) => {
         control.valueChanges.subscribe((v) => {
+          this.valueChangedEmit();
+
           if (v === '') {
             return;
           }
@@ -54,4 +68,8 @@ export class CodeInputComponent implements OnInit {
     elems[prevIdx].nativeElement.focus();
   }
 
+  private valueChangedEmit() {
+    const value = this.controls.map((control) => control.value).join('');
+    this.valueChanged.emit(value);
+  }
 }
