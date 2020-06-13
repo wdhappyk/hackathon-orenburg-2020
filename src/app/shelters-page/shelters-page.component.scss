@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+app-animal-action-card {
+  margin: 15px 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
