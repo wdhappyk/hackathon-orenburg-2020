@@ -6,6 +6,23 @@
     </a>
   </div>
   <div class="h-100 actions">
+
+    <button *ngIf="auth.isEmployeeOfAdministration()" mat-button routerLink="/administration-tasks">
+      <mat-icon>list</mat-icon>
+      Задачи
+    </button>
+
+    <button *ngIf="auth.isEmployeeOfAdministration()" mat-button routerLink="/administration-apps">
+      <mat-icon>speaker_notes</mat-icon>
+      Заявки
+    </button>
+
+    <button *ngIf="auth.isEmployeeOfAdministration()" mat-button routerLink="/shelters">
+      <mat-icon>home</mat-icon>
+      Приюты
+    </button>
+
+
     <button mat-button routerLink="/map">
       <mat-icon>map</mat-icon>
       Карта
@@ -14,10 +31,10 @@
       <mat-icon>pets</mat-icon>
       Животные
     </button>
-    <button mat-icon-button *ngIf="isAuth" (click)="signOut()">
+    <button mat-icon-button *ngIf="auth.isAuth" (click)="signOut()">
       <mat-icon>exit_to_app</mat-icon>
     </button>
-    <button mat-icon-button *ngIf="!isAuth" (click)="openSignInDialog()">
+    <button mat-icon-button *ngIf="!auth.isAuth" (click)="openSignInDialog()">
       <mat-icon>login</mat-icon>
     </button>
   </div>

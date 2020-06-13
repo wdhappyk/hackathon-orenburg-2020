@@ -10,16 +10,12 @@ import { ConfirmDialogService } from '../confirm-dialog/confirm-dialog.service';
   styleUrls: ['./nav-bar.component.scss'],
 })
 export class NavBarComponent implements OnInit {
-  isAuth: Boolean;
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private dialog: MatDialog,
     private confirm: ConfirmDialogService,
   ) {
-    auth.isAuth$.subscribe((isAuth) => {
-      this.isAuth = isAuth;
-    });
   }
 
   ngOnInit(): void {

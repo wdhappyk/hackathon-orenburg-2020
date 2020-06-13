@@ -20,6 +20,7 @@ const routes: Routes = [
     path: 'main',
     loadChildren: () => import('./main-page/main-page.module').then(m => m.MainPageModule),
   },
+  { path: 'administration-tasks', loadChildren: () => import('./administration-tasks-page/administration-tasks-page.module').then(m => m.AdministrationTasksPageModule) },
   {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),

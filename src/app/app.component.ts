@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.cookie.get('Token')) {
-      this.auth.signIn().subscribe({
+      this.auth.signIn(this.cookie.get('Token')).subscribe({
         complete: () => {
           this.login = false;
           this.authControl();

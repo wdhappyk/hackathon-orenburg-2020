@@ -96,7 +96,7 @@ export class SignInFormComponent implements OnInit {
   }
 
   private trySignIn() {
-    this.auth.signIn().subscribe({
+    this.auth.signIn(this.signInForm.controls.phone.value).subscribe({
       complete: () => {
         this.showSuccessMessage();
       },

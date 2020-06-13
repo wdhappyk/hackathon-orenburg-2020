@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInDialogComponent } from '../sign-in-dialog/sign-in-dialog.component';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-main-page',
@@ -10,10 +11,13 @@ import { SignInDialogComponent } from '../sign-in-dialog/sign-in-dialog.componen
 export class MainPageComponent implements OnInit {
 
   constructor(
-    private dialog: MatDialog
-  ) { }
+    private dialog: MatDialog,
+    public auth: AuthService,
+  ) {
+  }
 
   ngOnInit(): void {
+
   }
 
   openSignInDialog() {
