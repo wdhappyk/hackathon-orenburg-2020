@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
 import { AuthService } from './auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { FocusMonitor } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-root',
@@ -18,10 +19,14 @@ export class AppComponent implements OnInit {
     private dialog: MatDialog,
     private auth: AuthService,
     private cookie: CookieService,
+    private focusMonitor: FocusMonitor,
   ) {
+    this.focusMonitor.stopMonitoring(document.body);
     this.initLoader();
     this.auth.isAuth$.subscribe((isAuth) => {
-      if (isAuth) return;
+      if (isAuth) {
+        return;
+      }
       this.router.navigate(['/']);
     });
   }
