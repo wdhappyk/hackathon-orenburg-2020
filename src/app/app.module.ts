@@ -24,6 +24,7 @@ import { CodeInputComponent } from './code-input/code-input.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
+import { CategoryCardComponent } from './category-card/category-card.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [],
 })
 export class AppModule {
 }
