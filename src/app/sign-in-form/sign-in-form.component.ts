@@ -51,7 +51,7 @@ export class SignInFormComponent implements OnInit {
   }
 
   onRecendCode() {
-
+    this.startResendTimer();
   }
 
   sendCode() {
