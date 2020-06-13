@@ -23,7 +23,14 @@ const routes: Routes = [
     path: 'administration-apps',
     loadChildren: () => import('./administration-apps-page/administration-apps-page.module').then(m => m.AdministrationAppsPageModule),
   },
-  { path: 'shelters', loadChildren: () => import('./shelters-page/shelters-page.module').then(m => m.SheltersPageModule) },
+  {
+    path: 'shelters',
+    loadChildren: () => import('./shelters-page/shelters-page.module').then(m => m.SheltersPageModule),
+  },
+  {
+    path: 'contractor-orders',
+    loadChildren: () => import('./contractor-orders-page/contractor-orders-page.module').then(m => m.ContractorOrdersPageModule),
+  },
   {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),

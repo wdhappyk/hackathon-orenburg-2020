@@ -7,5 +7,11 @@ export const users: User[] = [
     fullName: 'Сидоров Иван Федорович',
     name: 'Иван',
     type: UserType.EmployeeOfAdministration,
-  }
+  },
+  {
+    phone: '(555) 555-12-35',
+    fullName: 'Петров Федор Иванович',
+    name: 'Федор',
+    type: UserType.Contractor,
+  },
 ];

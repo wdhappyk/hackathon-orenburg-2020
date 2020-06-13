@@ -7,20 +7,29 @@
   </div>
   <div class="h-100 actions">
 
-    <button *ngIf="auth.isEmployeeOfAdministration()" mat-button routerLink="/administration-tasks">
-      <mat-icon>list</mat-icon>
-      Задачи
-    </button>
+    <ng-container *ngIf="auth.isEmployeeOfAdministration()">
+      <button mat-button routerLink="/administration-tasks">
+        <mat-icon>list</mat-icon>
+        Задачи
+      </button>
 
-    <button *ngIf="auth.isEmployeeOfAdministration()" mat-button routerLink="/administration-apps">
-      <mat-icon matBadge="8" matBadgeColor="accent">speaker_notes</mat-icon>
-      Заявки
-    </button>
+      <button mat-button routerLink="/administration-apps">
+        <mat-icon matBadge="8" matBadgeColor="accent">speaker_notes</mat-icon>
+        Заявки
+      </button>
 
-    <button *ngIf="auth.isEmployeeOfAdministration()" mat-button routerLink="/shelters">
-      <mat-icon>home</mat-icon>
-      Приюты
-    </button>
+      <button mat-button routerLink="/shelters">
+        <mat-icon>home</mat-icon>
+        Приюты
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="auth.isContractor()">
+      <button mat-button routerLink="/contractor-orders">
+        <mat-icon>list</mat-icon>
+        Заказы
+      </button>
+    </ng-container>
 
 
     <button mat-button routerLink="/map">
