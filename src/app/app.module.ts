@@ -19,6 +19,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { StepperComponent } from './stepper/stepper.component';
+import { CodeInputComponent } from './code-input/code-input.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     NavBarComponent,
     SignInFormComponent,
     SignInDialogComponent,
+    StepperComponent,
+    CodeInputComponent,
   ],
   imports: [
     BrowserModule,

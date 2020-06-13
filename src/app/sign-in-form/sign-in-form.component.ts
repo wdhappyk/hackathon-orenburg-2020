@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CommonErrorStateMatcher } from '../error-state-matchers/common-error-state-matcher';
 import { phoneValidator } from '../form-validators/phone-validator';
+import { interval, timer } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -10,11 +12,14 @@ import { phoneValidator } from '../form-validators/phone-validator';
 })
 export class SignInFormComponent implements OnInit {
   signInForm = this.fb.group({
-    phone: ['', Validators.pattern(/\d{10}/)],
+    phone: ['1234567890', [Validators.required, Validators.pattern(/\d{10}/)]],
   });
   commonErrorStateMatcher = new CommonErrorStateMatcher();
 
   societies = ['yandex', 'google', 'gosuslugi', 'vk', 'fb'];
+  stepNumber = 0;
+  codeSize = 4;
+  countToResendCode = 300;
 
   constructor(
     private fb: FormBuilder,
@@ -25,7 +30,17 @@ export class SignInFormComponent implements OnInit {
   }
 
   nextStep() {
+    if (this.signInForm.controls.phone.invalid) return;
 
+
+    this.stepNumber++;
+
+
+    interval(1000)
+      .pipe(takeUntil(timer(301000)))
+      .subscribe(() => {
+        this.countToResendCode--;
+      });
   }
 
 }

@@ -1,0 +1,1 @@
+<input #input *ngFor="let control of controls" [formControl]="control" size="1" maxlength="1" placeholder="X" (keydown.backspace)="onBackspace(control)">
