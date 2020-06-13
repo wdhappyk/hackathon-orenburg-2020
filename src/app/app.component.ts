@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
     private focusMonitor: FocusMonitor,
   ) {
     this.initLoader();
-    this.authControl();
   }
 
   private initLoader(): void {
@@ -62,15 +61,17 @@ export class AppComponent implements OnInit {
       this.auth.signIn().subscribe({
         complete: () => {
           this.login = false;
+          this.authControl();
         },
         error: () => {
           this.login = false;
+          this.authControl();
         },
       });
       return;
     }
     this.login = false;
-    this.router.navigate(['/animal-categories']);
+    this.authControl();
   }
 
   private authControl() {

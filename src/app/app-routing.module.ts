@@ -9,6 +9,10 @@ const routes: Routes = [
     loadChildren: () => import('./animal-categories-page/animal-categories-page.module').then(m => m.AnimalCategoriesPageModule),
   },
   {
+    path: 'animal-search',
+    loadChildren: () => import('./animal-search-page/animal-search-page.module').then(m => m.AnimalSearchPageModule),
+  },
+  {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
   },

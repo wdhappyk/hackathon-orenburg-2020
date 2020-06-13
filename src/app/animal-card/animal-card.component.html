@@ -1,0 +1,37 @@
+<mat-card class="p-0 overflow-hidden">
+  <div
+    class="media"
+    [class.flex-column]="small"
+    [class.align-items-stretch]="small"
+  >
+    <div
+      class="photo"
+      [class.w-100]="small"
+      [class.w-50]="!small"
+
+    >
+      <img
+        src="/assets/animals/dogs/shiba.jpg"
+        class="d-block w-100"
+        alt="Бруно"
+      >
+      <div *ngIf="small" class="description">
+        <ul *ngIf="params" class="list-unstyled">
+          <li *ngFor="let param of params">
+            {{param.name}}: {{param.value}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="media-body px-3">
+      <mat-card-title class="my-2" [class.text-center]="small">
+        Бруно
+      </mat-card-title>
+      <ul *ngIf="!small && params" class="list-unstyled">
+        <li *ngFor="let param of params">
+          {{param.name}}: {{param.value}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</mat-card>
