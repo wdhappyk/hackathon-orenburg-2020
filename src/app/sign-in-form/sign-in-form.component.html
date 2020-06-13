@@ -11,8 +11,14 @@
         <mat-form-field class="w-100">
           <mat-label>Телефон</mat-label>
           <span matPrefix>+7 &nbsp;</span>
-          <input #phone type="tel" matInput placeholder="555-555-1234" formControlName="phone"
-                 [errorStateMatcher]="commonErrorStateMatcher">
+          <input #phone
+                 type="tel"
+                 matInput
+                 placeholder="(555) 555-12-34"
+                 formControlName="phone"
+                 [errorStateMatcher]="commonErrorStateMatcher"
+                 [textMask]="{ mask: mask }"
+          >
           <mat-error *ngIf="phone.value.length > 0">
             Телефон должен содержать 10 цифр
           </mat-error>
@@ -25,14 +31,13 @@
         <app-code-input [size]="codeSize"></app-code-input>
       </div>
     </div>
-
   </div>
 
   <button mat-raised-button color="primary" class="w-100 mt-1" type="submit">
     {{ stepNumber == 0 ? 'Запросить код' : 'Отправить код' }}
   </button>
   <button mat-stroked-button class="w-100 mt-1" *ngIf="stepNumber > 0" [disabled]="countToResendCode > 0">
-    Запросить код повторно ({{countToResendCode}} сек.)
+    Запросить код повторно<span *ngIf="countToResendCode > 0"> ({{countToResendCode}} сек.)</span>
   </button>
 </form>
 <p class="text-center mat-small mt-3">или</p>

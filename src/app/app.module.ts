@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { StepperComponent } from './stepper/stepper.component';
 import { CodeInputComponent } from './code-input/code-input.component';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { CodeInputComponent } from './code-input/code-input.component';
     ReactiveFormsModule,
     MatDialogModule,
     MatButtonModule,
+    TextMaskModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

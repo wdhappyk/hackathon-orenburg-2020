@@ -1,5 +1,6 @@
-import { Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { CodeInputTriggerService } from './code-input-trigger.service';
 
 @Component({
   selector: 'app-code-input',
@@ -34,10 +35,15 @@ export class CodeInputComponent implements OnInit {
     }
   }
 
-  constructor() {
+  constructor(
+    private codeInput: CodeInputTriggerService,
+  ) {
   }
 
   ngOnInit(): void {
+    this.codeInput.trigger$.subscribe(() => {
+      this.inputs.first?.nativeElement.focus();
+    });
   }
 
   onBackspace(control: FormControl) {
