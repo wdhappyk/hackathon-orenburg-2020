@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { SignInDialogComponent } from '../sign-in-dialog/sign-in-dialog.component';
 
 @Component({
   selector: 'app-main-page',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  openSignInDialog() {
+    this.dialog.open(SignInDialogComponent);
   }
 
 }
