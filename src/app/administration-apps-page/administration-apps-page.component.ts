@@ -62,11 +62,11 @@ export class AdministrationAppsPageComponent implements OnInit {
 
   get filteredApplications() {
     const status = this.statusFormControl.value;
-    const contractors = this.applicantsFormControl.value?.length ? this.applicantsFormControl.value : this.applicantList;
+    const applicants = this.applicantsFormControl.value?.length ? this.applicantsFormControl.value : this.applicantList;
 
     return this.applications.filter((app) => {
       return (status === 'all' || status !== 'all' && app.status === status)
-        && contractors.includes(app.applicant);
+        && applicants.includes(app.applicant);
     });
   }
 
