@@ -23,6 +23,7 @@ export class AuthService {
   private guestUser: User = {
     phone: '',
     fullName: 'Гость',
+    name: 'Гость',
     type: UserType.Guest,
   };
 
@@ -44,6 +45,7 @@ export class AuthService {
     this.user = users.find((user) => user.phone === phone) || {
       phone,
       fullName: 'Новый Пользователь',
+      name: 'Пользователь',
       type: UserType.Client,
     };
 

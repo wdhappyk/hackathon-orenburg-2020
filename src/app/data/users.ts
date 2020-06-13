@@ -5,6 +5,7 @@ export const users: User[] = [
   {
     phone: '(555) 555-12-34',
     fullName: 'Сидоров Иван Федорович',
+    name: 'Иван',
     type: UserType.EmployeeOfAdministration,
   }
 ];

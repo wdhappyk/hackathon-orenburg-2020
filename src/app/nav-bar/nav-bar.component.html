@@ -13,7 +13,7 @@
     </button>
 
     <button *ngIf="auth.isEmployeeOfAdministration()" mat-button routerLink="/administration-apps">
-      <mat-icon>speaker_notes</mat-icon>
+      <mat-icon matBadge="8" matBadgeColor="accent">speaker_notes</mat-icon>
       Заявки
     </button>
 
@@ -31,9 +31,22 @@
       <mat-icon>pets</mat-icon>
       Животные
     </button>
-    <button mat-icon-button *ngIf="auth.isAuth" (click)="signOut()">
-      <mat-icon>exit_to_app</mat-icon>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item>Настройки</button>
+      <button mat-menu-item>Помощь</button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="signOut()">Выход</button>
+    </mat-menu>
+
+    <button mat-button *ngIf="auth.isAuth" [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
     </button>
+
+
+<!--    <button mat-icon-button *ngIf="auth.isAuth" (click)="signOut()">-->
+<!--      <mat-icon>exit_to_app</mat-icon>-->
+<!--    </button>-->
     <button mat-icon-button *ngIf="!auth.isAuth" (click)="openSignInDialog()">
       <mat-icon>login</mat-icon>
     </button>

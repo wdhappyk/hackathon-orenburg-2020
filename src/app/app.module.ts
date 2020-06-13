@@ -25,6 +25,9 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
 import { CategoryCardComponent } from './category-card/category-card.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,9 @@ import { CategoryCardComponent } from './category-card/category-card.component';
     TextMaskModule,
     MatSnackBarModule,
     ConfirmDialogModule,
+    MatBadgeModule,
+    MatMenuModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
