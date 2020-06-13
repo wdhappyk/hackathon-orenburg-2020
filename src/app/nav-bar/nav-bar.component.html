@@ -41,6 +41,7 @@
 
     <button mat-button *ngIf="auth.isAuth" [matMenuTriggerFor]="userMenu">
       <mat-icon>account_circle</mat-icon>
+      {{auth.user.name}}
     </button>
 
 
