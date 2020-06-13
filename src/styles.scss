@@ -1,3 +1,16 @@
+@mixin set-grid($param, $start, $end) {
+  grid-#{$param}-start: $start;
+  grid-#{$param}-end: $end;
+}
+
+@mixin set-column($start, $end) {
+  @include set-grid('column', $start, $end);
+}
+
+@mixin set-row($start, $end) {
+  @include set-grid('row', $start, $end);
+}
+
 html, body {
   height: 100%;
 }
