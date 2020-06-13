@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
@@ -9,10 +9,11 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   loading = false;
+  login = true;
 
   constructor(
     private router: Router,
@@ -21,14 +22,8 @@ export class AppComponent implements OnInit {
     private cookie: CookieService,
     private focusMonitor: FocusMonitor,
   ) {
-    this.focusMonitor.stopMonitoring(document.body);
     this.initLoader();
-    this.auth.isAuth$.subscribe((isAuth) => {
-      if (isAuth) {
-        return;
-      }
-      this.router.navigate(['/']);
-    });
+    this.authControl();
   }
 
   private initLoader(): void {
@@ -41,7 +36,8 @@ export class AppComponent implements OnInit {
 
         if (event instanceof NavigationStart) {
           this.loading = true;
-        } else if (event instanceof NavigationError || event instanceof NavigationEnd || event instanceof NavigationCancel) {
+        }
+        else if (event instanceof NavigationError || event instanceof NavigationEnd || event instanceof NavigationCancel) {
           this.loading = false;
         }
       },
@@ -63,11 +59,26 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.cookie.get('Token')) {
-      this.auth.signIn();
+      this.auth.signIn().subscribe({
+        complete: () => {
+          this.login = false;
+        },
+        error: () => {
+          this.login = false;
+        },
+      });
       return;
     }
-    this.router.navigate(['/animal-categories']).then(() => {
-      this.openSignInDialog();
+    this.login = false;
+    this.router.navigate(['/animal-categories']);
+  }
+
+  private authControl() {
+    this.auth.isAuth$.subscribe((isAuth) => {
+      if (isAuth) {
+        return;
+      }
+      this.router.navigate(['/']);
     });
   }
 }
