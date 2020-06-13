@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInDialogComponent } from './sign-in-dialog/sign-in-dialog.component';
+import { AuthService } from './auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +16,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private dialog: MatDialog,
+    private auth: AuthService,
+    private cookie: CookieService,
   ) {
     this.initLoader();
   }
@@ -49,6 +53,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.cookie.get('Token')) {
+      this.auth.signIn();
+      return;
+    }
     this.openSignInDialog();
   }
 }

@@ -5,6 +5,9 @@ import { phoneValidator } from '../form-validators/phone-validator';
 import { interval, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CodeInputTriggerService } from '../code-input/code-input-trigger.service';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -27,6 +30,8 @@ export class SignInFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private codeInputTrigger: CodeInputTriggerService,
+    private auth: AuthService,
+    private snackBar: MatSnackBar,
   ) {
   }
 
@@ -41,14 +46,24 @@ export class SignInFormComponent implements OnInit {
       return;
     }
 
-
     this.stepNumber++;
     this.startResendTimer();
     this.codeInputTrigger.triggerOnInput();
   }
 
-  verifyCode() {
+  isCodeValid() {
+    return this.code.length === this.codeSize;
+  }
 
+  verifyCode() {
+    if (!this.isCodeValid()) return;
+    this.auth.verifyCode(this.code).subscribe((isCodeValid) => {
+      if (isCodeValid) {
+        this.trySignIn();
+      } else {
+        this.showInvalidCodeMessage();
+      }
+    })
   }
 
   onRecendCode() {
@@ -72,5 +87,25 @@ export class SignInFormComponent implements OnInit {
   setCode(code: string) {
     this.code = code;
     console.log(code);
+  }
+
+  private showSuccessMessage() {
+    this.snackBar.open('Добро пожаловать!', null, {
+      duration: 2000,
+    });
+  }
+
+  private trySignIn() {
+    this.auth.signIn().subscribe({
+      complete: () => {
+        this.showSuccessMessage();
+      },
+    });
+  }
+
+  private showInvalidCodeMessage() {
+    this.snackBar.open('Указан неверный код!', null, {
+      duration: 2000,
+    });
   }
 }

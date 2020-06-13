@@ -22,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { StepperComponent } from './stepper/stepper.component';
 import { CodeInputComponent } from './code-input/code-input.component';
 import { TextMaskModule } from 'angular2-text-mask';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { TextMaskModule } from 'angular2-text-mask';
     MatDialogModule,
     MatButtonModule,
     TextMaskModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
