@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between mx-3 mt-4 align-items-center">
-  <h3>Текущие задачи</h3>
+  <h3>Текущие заявки</h3>
   <div>
     <mat-form-field class="mr-3">
       <mat-label>Исполнитель</mat-label>
@@ -19,28 +19,28 @@
 <div class="container-fluid">
   <div class="row no-gutters">
     <div class="col-8 pr-3">
-      <app-animal-action-card *ngFor="let task of filteredTasks" animalCategory="dogs" class="py-3" [iconColor]="task.status">
+      <app-animal-action-card *ngFor="let app of filteredApplications" animalCategory="dogs" class="py-3" [iconColor]="app.status">
         <div class="row align-items-center">
           <div class="col-1"></div>
           <div class="col-3">
             <div class="font-weight-bold">Дата создания</div>
-            <div class="mt-1">{{task.createDate | date:'dd.MM.yyyy'}}</div>
+            <div class="mt-1">{{app.createDate | date:'dd.MM.yyyy'}}</div>
           </div>
           <div class="col-3">
             <div class="font-weight-bold">Исполнитель</div>
-            <div class="mt-1">{{task.contractor}}</div>
+            <div class="mt-1">{{app.applicant}}</div>
           </div>
           <div class="col-4">
             <div class="font-weight-bold">Адрес</div>
             <div class="mt-1 text-nowrap overflow-hidden" style="text-overflow: ellipsis">
-              {{task.address}}
+              {{app.address}}
             </div>
           </div>
           <div class="col-1">
             <mat-menu #actionMenu="matMenu">
               <button mat-menu-item>Действие</button>
               <mat-divider></mat-divider>
-              <button mat-menu-item (click)="removeTask(task)">Удалить</button>
+              <button mat-menu-item (click)="removeApplication(app)">Удалить</button>
             </mat-menu>
             <button mat-icon-button [matMenuTriggerFor]="actionMenu">
               <mat-icon>more_vert</mat-icon>
@@ -48,7 +48,7 @@
           </div>
         </div>
       </app-animal-action-card>
-      <p *ngIf="filteredTasks.length === 0" class="text-secondary text-center my-3">
+      <p *ngIf="filteredApplications.length === 0" class="text-secondary text-center my-3">
         Задач нет.
       </p>
     </div>

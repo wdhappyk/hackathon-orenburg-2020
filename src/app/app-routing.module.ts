@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./administration-tasks-page/administration-tasks-page.module').then(m => m.AdministrationTasksPageModule),
   },
   {
+    path: 'administration-apps',
+    loadChildren: () => import('./administration-apps-page/administration-apps-page.module').then(m => m.AdministrationAppsPageModule),
+  },
+  {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
   },
