@@ -5,8 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'main',
-    pathMatch: 'full',
+    loadChildren: () => import('./main-page/main-page.module').then(m => m.MainPageModule),
   },
   {
     path: 'animal-categories',
@@ -17,10 +16,9 @@ const routes: Routes = [
     loadChildren: () => import('./animal-search-page/animal-search-page.module').then(m => m.AnimalSearchPageModule),
   },
   {
-    path: 'main',
-    loadChildren: () => import('./main-page/main-page.module').then(m => m.MainPageModule),
+    path: 'administration-tasks',
+    loadChildren: () => import('./administration-tasks-page/administration-tasks-page.module').then(m => m.AdministrationTasksPageModule),
   },
-  { path: 'administration-tasks', loadChildren: () => import('./administration-tasks-page/administration-tasks-page.module').then(m => m.AdministrationTasksPageModule) },
   {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),

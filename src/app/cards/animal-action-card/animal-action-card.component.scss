@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  overflow: hidden;
+  background-color: #f3f3fd;
+  color: #000;
+  position: relative;
+  min-height: 60px;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12)
+}
+
+.icon {
+  position: absolute;
+  z-index: 10;
+  width: 76px;
+  height: 76px;
+  left: -24px;
+  top: -19px;
+  border-radius: 100%;
+
+  img {
+    position: absolute;
+    right: 12px;
+    bottom: 19px;
+  }
+}
