@@ -4,9 +4,10 @@
   justify-content: center;
   height: calc(100vh - 64px);
   background-image: url('/assets/main.png');
-  background-position: 90%;
   background-repeat: no-repeat;
-  background-size: 53%;
+  background-position: right;
+  background-size: cover;
+  position: relative;
 }
 
 .title {
@@ -33,6 +34,37 @@
   .button {
     width: 230px;
   }
+}
+
+.emblem {
+  position: absolute;
+  right: 100px;
+  top: 35px;
+}
+
+.emblem__text {
+  font-size: 10px;
+
+  span {
+    font-size: 16px;
+  }
+}
+
+.soc-icons {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 150px;
+}
+
+.soc-icons img {
+  width: 30px;
+}
+
+.soc-icons img:last-child {
+  width: 15px;
+  height: 30px;
 }
 
 .content {

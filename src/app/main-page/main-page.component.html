@@ -1,10 +1,27 @@
 <div class="content">
+  <div class="emblem d-flex align-items-center justify-content-center mr-1">
+    <div class="emblem__text">Муниципальное образование
+      <br><span>город Бугуруслан</span>
+    </div>
+    <img src="/assets/icons/emblem.png" alt="">
+  </div>
+  <div class="soc-icons d-flex align-items-center justify-content-between flex-column">
+    <a href="//instagram.com">
+      <img src="/assets/icons/societies/inst.svg" alt="">
+    </a>
+    <a href="//instagram.com">
+      <img src="/assets/icons/societies/vk.svg" alt="">
+    </a>
+    <a href="//instagram.com">
+      <img src="/assets/icons/societies/fb.svg" alt="">
+    </a>
+  </div>
   <h6 class="mb-0 subtitle">Информационная система</h6>
   <h1 class="title mb-0">Животные без владельцев</h1>
   <p class="p-0 description">Любовь к себе начинается с любви к братьям нашим меньшим!</p>
 
   <div class="buttons">
-    <button *ngIf="!auth.isAuth" mat-raised-button color="primary" class="button mr-5" (click)="openSignInDialog()">Я - пользователь</button>
+    <button *ngIf="!auth.isAuth" mat-raised-button color="primary" class="button mr-3" (click)="openSignInDialog()">Я - пользователь</button>
     <button mat-raised-button class="button" style="border: 2px solid #3f51b5;" routerLink="/animal-search">Хочу питомца</button>
   </div>
 </div>
