@@ -26,7 +26,7 @@ export class AdministrationAppsPageComponent implements OnInit {
     {
       status: CardStatus.Complete,
       createDate: new Date(2020, 5, 14),
-      applicant: 'ИП "Собакофф"',
+      applicant: 'Сидоров И.А.',
       address: 'г. Бугуруслан, ул. Московская, д. 12',
     },
     {
@@ -36,9 +36,9 @@ export class AdministrationAppsPageComponent implements OnInit {
       address: 'г. Бугуруслан, ул. Московская, д. 12',
     },
     {
-      status: CardStatus.ReadyConfirm,
+      status: CardStatus.Fail,
       createDate: new Date(2020, 5, 14),
-      applicant: 'ИП "Собакофф"',
+      applicant: 'Сидоров И.А.',
       address: 'г. Бугуруслан, ул. Московская, д. 12',
     },
     {
@@ -50,19 +50,19 @@ export class AdministrationAppsPageComponent implements OnInit {
     {
       status: CardStatus.Process,
       createDate: new Date(2020, 5, 14),
-      applicant: 'ИП "Собакофф"',
+      applicant: 'Сидоров И.А.',
       address: 'г. Бугуруслан, ул. Московская, д. 12',
     },
   ];
-  contractorsFormControl = new FormControl([]);
-  contractorsList = ['ИП "Собакофф"', 'ИП "Котофф"', 'ИП "Крокодилофф"', 'ИП "Копытофф"'];
+  applicantsFormControl = new FormControl([]);
+  applicantList = ['ИП "Собакофф"', 'Сидоров И.А.', 'ИП "Крокодилофф"', 'Федорова О.И.'];
   statisticYear = 2020;
   statusFormControl = new FormControl('all');
 
 
   get filteredApplications() {
     const status = this.statusFormControl.value;
-    const contractors = this.contractorsFormControl.value?.length ? this.contractorsFormControl.value : this.contractorsList;
+    const contractors = this.applicantsFormControl.value?.length ? this.applicantsFormControl.value : this.applicantList;
 
     return this.applications.filter((app) => {
       return (status === 'all' || status !== 'all' && app.status === status)

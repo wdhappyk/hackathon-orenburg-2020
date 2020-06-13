@@ -3,14 +3,13 @@
   <div>
     <mat-form-field class="mr-3">
       <mat-label>Исполнитель</mat-label>
-      <mat-select [formControl]="contractorsFormControl" multiple>
-        <mat-option *ngFor="let contractor of contractorsList" [value]="contractor">{{contractor}}</mat-option>
+      <mat-select [formControl]="applicantsFormControl" multiple>
+        <mat-option *ngFor="let contractor of applicantList" [value]="contractor">{{contractor}}</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-button-toggle-group [formControl]="statusFormControl">
       <mat-button-toggle value="all">Все</mat-button-toggle>
       <mat-button-toggle value="#8080f6">В процессе</mat-button-toggle>
-      <mat-button-toggle value="#f9ea69">Ожидают подтверждения</mat-button-toggle>
       <mat-button-toggle value="#259314">Выполненные</mat-button-toggle>
       <mat-button-toggle value="#e96a6f">Просроченные</mat-button-toggle>
     </mat-button-toggle-group>
@@ -27,7 +26,7 @@
             <div class="mt-1">{{app.createDate | date:'dd.MM.yyyy'}}</div>
           </div>
           <div class="col-3">
-            <div class="font-weight-bold">Исполнитель</div>
+            <div class="font-weight-bold">Заявитель</div>
             <div class="mt-1">{{app.applicant}}</div>
           </div>
           <div class="col-4">
@@ -49,7 +48,7 @@
         </div>
       </app-animal-action-card>
       <p *ngIf="filteredApplications.length === 0" class="text-secondary text-center my-3">
-        Задач нет.
+        Заявок нет.
       </p>
     </div>
     <div class="col-4">
