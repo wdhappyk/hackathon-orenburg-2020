@@ -9,6 +9,8 @@ export class AnimalCardComponent implements OnInit {
 
   @Input() small = true;
   @Input() params;
+  @Input() image;
+  @Input() name = '';
 
   constructor() { }
 

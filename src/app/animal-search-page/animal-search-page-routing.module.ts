@@ -5,7 +5,6 @@ import { AnimalSearchPageComponent } from './animal-search-page.component';
 
 const routes: Routes = [
   { path: '', component: AnimalSearchPageComponent },
-  { path: ':category', component: AnimalSearchPageComponent },
 ];
 
 @NgModule({
