@@ -3,7 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'animal-categories', pathMatch: 'full' },
+  {
+    path: '',
+    redirectTo: 'main',
+    pathMatch: 'full',
+  },
   {
     path: 'animal-categories',
     loadChildren: () => import('./animal-categories-page/animal-categories-page.module').then(m => m.AnimalCategoriesPageModule),
@@ -11,6 +15,10 @@ const routes: Routes = [
   {
     path: 'animal-search',
     loadChildren: () => import('./animal-search-page/animal-search-page.module').then(m => m.AnimalSearchPageModule),
+  },
+  {
+    path: 'main',
+    loadChildren: () => import('./main-page/main-page.module').then(m => m.MainPageModule),
   },
   {
     path: '**',
