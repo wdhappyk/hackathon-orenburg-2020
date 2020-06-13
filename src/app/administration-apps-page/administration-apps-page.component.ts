@@ -30,13 +30,13 @@ export class AdministrationAppsPageComponent implements OnInit {
       address: 'г. Бугуруслан, ул. Московская, д. 12',
     },
     {
-      status: CardStatus.Fail,
+      status: CardStatus.Complete,
       createDate: new Date(2020, 5, 14),
       applicant: 'ИП "Собакофф"',
       address: 'г. Бугуруслан, ул. Московская, д. 12',
     },
     {
-      status: CardStatus.Fail,
+      status: CardStatus.Complete,
       createDate: new Date(2020, 5, 14),
       applicant: 'Сидоров И.А.',
       address: 'г. Бугуруслан, ул. Московская, д. 12',
