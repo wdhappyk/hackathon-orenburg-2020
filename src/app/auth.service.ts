@@ -8,9 +8,10 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class AuthService {
-  private isAuth = new Subject<boolean>();
+  private isAuthSubject = new Subject<boolean>();
+
   get isAuth$() {
-    return this.isAuth.asObservable();
+    return this.isAuthSubject.asObservable();
   }
 
   constructor(
@@ -18,12 +19,12 @@ export class AuthService {
     private cookie: CookieService,
     private snackBar: MatSnackBar,
   ) {
-    this.isAuth.next(false);
+    this.isAuthSubject.next(false);
   }
 
   signIn(): Observable<boolean> {
     this.cookie.set('Token', '12345-6789-01235');
-    this.isAuth.next(true);
+    this.isAuthSubject.next(true);
     return new Observable<boolean>((observer) => {
       observer.complete();
       return {
@@ -35,5 +36,10 @@ export class AuthService {
 
   verifyCode(code: string): Observable<boolean> {
     return of(code === '1234');
+  }
+
+  signOut() {
+    this.isAuthSubject.next(false);
+    this.cookie.deleteAll();
   }
 }

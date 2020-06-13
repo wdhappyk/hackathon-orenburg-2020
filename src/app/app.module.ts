@@ -23,6 +23,7 @@ import { StepperComponent } from './stepper/stepper.component';
 import { CodeInputComponent } from './code-input/code-input.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ConfirmDialogModule } from './confirm-dialog/confirm-dialog.module';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatButtonModule,
     TextMaskModule,
     MatSnackBarModule,
+    ConfirmDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,25 +1,24 @@
-<mat-toolbar color="primary" class="justify-content-between shadow">
+<mat-toolbar class="justify-content-between shadow bg-white">
   <div class="h-100">
-    <h1 class="sr-only">Hackathon</h1>
+    <h1 class="sr-only"></h1>
     <a routerLink="/" class="h-100 d-flex align-items-center">
-      Hackathon 2020
+      <img src="/assets/logo.png" alt="logo">
     </a>
   </div>
-<!--  <div class="h-100 actions" *ngIf="system.isAuth">-->
-<!--    <button mat-button routerLink="/search">-->
-<!--      <mat-icon>search</mat-icon>-->
-<!--      Search-->
-<!--    </button>-->
-<!--    <button mat-button routerLink="/dashboard">-->
-<!--      <mat-icon>devices</mat-icon>-->
-<!--      Devices-->
-<!--    </button>-->
-<!--    <button mat-button routerLink="/reports" class="mr-2">-->
-<!--      <mat-icon>date_range</mat-icon>-->
-<!--      Reports-->
-<!--    </button>-->
-<!--    <button mat-icon-button (click)="signOut()">-->
-<!--      <mat-icon>exit_to_app</mat-icon>-->
-<!--    </button>-->
-<!--  </div>-->
+  <div class="h-100 actions">
+    <button mat-button routerLink="/map">
+      <mat-icon>map</mat-icon>
+      Карта
+    </button>
+    <button mat-button routerLink="/animals">
+      <mat-icon>pets</mat-icon>
+      Животные
+    </button>
+    <button mat-icon-button *ngIf="isAuth" (click)="signOut()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="!isAuth" (click)="openSignInDialog()">
+      <mat-icon>login</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>

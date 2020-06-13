@@ -20,6 +20,10 @@ export class AppComponent implements OnInit {
     private cookie: CookieService,
   ) {
     this.initLoader();
+    this.auth.isAuth$.subscribe((isAuth) => {
+      if (isAuth) return;
+      this.router.navigate(['/']);
+    });
   }
 
   private initLoader(): void {
@@ -57,6 +61,8 @@ export class AppComponent implements OnInit {
       this.auth.signIn();
       return;
     }
-    this.openSignInDialog();
+    this.router.navigate(['/animal-categories']).then(() => {
+      this.openSignInDialog();
+    });
   }
 }
