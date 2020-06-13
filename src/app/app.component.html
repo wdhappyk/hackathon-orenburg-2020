@@ -1,6 +1,9 @@
 <ngx-loading-bar color="#e6304a" [includeSpinner]="true"></ngx-loading-bar>
 <app-nav-bar></app-nav-bar>
-<p class="text-center my-5 text-secondary" *ngIf="loading || login">
-  Пожалуйста, подождите...
-</p>
-<router-outlet *ngIf="!loading && !login"></router-outlet>
+<div class="router-container">
+  <p class="text-center my-5 text-secondary" *ngIf="loading || login">
+    Пожалуйста, подождите...
+  </p>
+  <router-outlet *ngIf="!loading && !login"></router-outlet>
+</div>
+

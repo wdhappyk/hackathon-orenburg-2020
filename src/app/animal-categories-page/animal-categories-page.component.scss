@@ -1,5 +1,9 @@
 @import "../../styles";
 
+:host {
+  display: block;
+}
+
 .grid {
   display: grid;
   max-width: fit-content;
