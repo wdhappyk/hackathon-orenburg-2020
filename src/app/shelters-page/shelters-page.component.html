@@ -1,7 +1,12 @@
-<h3 class="mx-3 mt-4 mb-3">Приюты для животных</h3>
 <div class="container-fluid">
   <div class="row no-gutters">
     <div class="col-8 pr-3">
+      <div class="d-flex justify-content-between mt-4 mb-3 align-items-center">
+        <h3>Приюты для животных</h3>
+        <div>
+          <button mat-raised-button color="primary">Добавить</button>
+        </div>
+      </div>
       <app-animal-action-card *ngFor="let shelter of shelters" class="py-3">
         <div class="row align-items-center">
           <div class="col-1"></div>
@@ -28,7 +33,7 @@
       </p>
     </div>
     <div class="col-4">
-      <mat-card>
+      <mat-card class="mt-4">
         <mat-card-content>
           <div class="mt-1 custom-form-control d-flex justify-content-between">
             <label>
