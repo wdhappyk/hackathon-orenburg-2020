@@ -17,7 +17,7 @@ export class ContractorOrderDetailPageComponent implements OnInit {
     behaviorBeforeTrapping: this.fb.control('Агрессивное', Validators.required),
     captureDate: this.fb.control(new Date(), Validators.required),
     captureTime: this.fb.control('', Validators.required),
-    signs: this.fb.control('', Validators.required),
+    signs: this.fb.control(''),
     captureLocation: this.fb.control('', Validators.required),
     contractor: this.fb.control('', Validators.required),
   });

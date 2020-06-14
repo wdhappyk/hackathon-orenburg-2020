@@ -1,1 +1,120 @@
-<p>shelter-animal-detail-page works!</p>
+<div class="d-flex justify-content-start mx-3 mt-4 mb-3 align-items-center">
+  <button mat-icon-button class="mr-2" routerLink="/shelter-animals">
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+  <h3 class="mb-0">Карточка животного</h3>
+</div>
+<div class="container-fluid">
+  <div class="row no-gutters">
+    <div class="col-8 pr-3">
+      <form [formGroup]="detailForm">
+        <app-animal-action-card animalCategory="dogs" class="py-3">
+          <div class="row no-gutters">
+            <div class="col-5">
+              <app-photo-viewer
+                class="mx-3"
+                [photos]="['/assets/animals/dogs/Алабай/Бруно.jpg', '/assets/animals/dogs/Пудель/Арчи.jpg']"
+              ></app-photo-viewer>
+            </div>
+            <div class="col-7 pr-3">
+              <mat-form-field class="d-block">
+                <mat-label>Кличка</mat-label>
+                <input matInput type="text" formControlName="name">
+              </mat-form-field>
+              <mat-form-field class="d-block">
+                <mat-label>Вид</mat-label>
+                <mat-select formControlName="category">
+                  <mat-option *ngFor="let c of categories" [value]="c.category">{{c.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="d-block">
+                <mat-label>Пол</mat-label>
+                <mat-select formControlName="gender">
+                  <mat-option *ngFor="let gender of category['genderList']" [value]="gender">{{gender}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="w-100">
+                <mat-label>Дата рождения</mat-label>
+                <input formControlName="birthday" matInput [matDatepicker]="pickerCaptureDate">
+                <mat-datepicker-toggle matSuffix [for]="pickerCaptureDate"></mat-datepicker-toggle>
+                <mat-datepicker #pickerCaptureDate></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="d-block">
+                <mat-label>Окрас</mat-label>
+                <mat-select formControlName="color">
+                  <mat-option *ngFor="let color of colors" [value]="color">{{color}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="d-block">
+                <mat-label>Виртуальный хозяйн</mat-label>
+                <input matInput type="text" formControlName="virtualOwner">
+              </mat-form-field>
+              <div class="d-flex justify-content-end">
+                <button mat-raised-button color="primary">Сохранить</button>
+              </div>
+            </div>
+          </div>
+        </app-animal-action-card>
+      </form>
+    </div>
+    <div class="col-4">
+      <mat-card>
+        <mat-card-title>Новое событие</mat-card-title>
+        <mat-card-content>
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Поступление</mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-form-field class="d-block">
+                <mat-label>Кто доставил</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let contractor of contractorsList"
+                              [value]="contractor">{{contractor}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="w-100">
+                <mat-label>Дата поступления</mat-label>
+                <input matInput [matDatepicker]="pickerReceiptDate">
+                <mat-datepicker-toggle matSuffix [for]="pickerReceiptDate"></mat-datepicker-toggle>
+                <mat-datepicker #pickerReceiptDate></mat-datepicker>
+              </mat-form-field>
+              <button class="w-100" mat-raised-button color="primary">Добавить</button>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Маркировка</mat-panel-title>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Вакцинация</mat-panel-title>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Стерилизация</mat-panel-title>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Возврат</mat-panel-title>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Передача</mat-panel-title>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>Смерть</mat-panel-title>
+              </mat-expansion-panel-header>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
