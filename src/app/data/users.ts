@@ -14,4 +14,10 @@ export const users: User[] = [
     name: 'Федор',
     type: UserType.Contractor,
   },
+  {
+    phone: '(555) 555-12-36',
+    fullName: 'Исаев Николай Виткорович',
+    name: 'Николай',
+    type: UserType.EmployeeOfShelter,
+  },
 ];

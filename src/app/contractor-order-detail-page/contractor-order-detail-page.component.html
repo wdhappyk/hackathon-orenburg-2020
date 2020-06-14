@@ -1,78 +1,96 @@
 <div class="d-flex justify-content-start mx-3 mt-4 mb-3 align-items-center">
-  <button mat-icon-button class="mr-2" routerLink="/administration-tasks">
+  <button mat-icon-button class="mr-2" routerLink="/contractor-orders">
     <mat-icon>navigate_before</mat-icon>
   </button>
-  <h3 class="mb-0">Задача</h3>
+  <h3 class="mb-0">Сведения о исполнении</h3>
 </div>
 <div class="container-fluid">
   <div class="row no-gutters">
     <div class="col-8 pr-3">
-      <app-animal-action-card animalCategory="dogs" class="py-3">
-        <div class="row no-gutters">
-          <div class="col-5">
-            <app-photo-viewer
-              class="mx-3"
-              [photos]="['/assets/animals/dogs/Алабай/Бруно.jpg', '/assets/animals/dogs/Пудель/Арчи.jpg']"
-            ></app-photo-viewer>
-          </div>
-          <div class="col-7 pr-3">
-            <div class="info">
-              <div class="info-row">
-                <span class="info-label">Дата создания:</span>
-                <span>11.02.20 11:05:10</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Адрес:</span>
-                <span>ул. Центральная</span>
-              </div>
-              <div class="info-row">
-                <span class="info-label">Исполнитель:</span>
-                <span>ИП "Собакофф"</span>
+      <form [formGroup]="detailForm">
+        <app-animal-action-card animalCategory="dogs" class="py-3">
+          <div class="row no-gutters">
+            <div class="col-5">
+              <app-photo-viewer
+                class="mx-3"
+                [photos]="['/assets/animals/dogs/Алабай/Бруно.jpg', '/assets/animals/dogs/Пудель/Арчи.jpg']"
+              ></app-photo-viewer>
+            </div>
+            <div class="col-7 pr-3">
+              <mat-form-field class="d-block">
+                <mat-label>Вид</mat-label>
+                <mat-select formControlName="category">
+                  <mat-option *ngFor="let c of categories" [value]="c.category">{{c.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="d-block">
+                <mat-label>Пол</mat-label>
+                <mat-select formControlName="gender">
+                  <mat-option *ngFor="let gender of category['genderList']" [value]="gender">{{gender}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="d-block">
+                <mat-label>Окрас</mat-label>
+                <mat-select formControlName="color">
+                  <mat-option *ngFor="let color of colors" [value]="color">{{color}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="d-block">
+                <mat-label>Регистрационный знак</mat-label>
+                <mat-select formControlName="regPlate">
+                  <mat-option *ngFor="let plate of regPlates" [value]="plate">{{plate}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field class="d-block">
+                <mat-label>Поведение перед отловом</mat-label>
+                <mat-select formControlName="behaviorBeforeTrapping">
+                  <mat-option *ngFor="let behavior of behaviorVariants" [value]="behavior">{{behavior}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <div class="d-flex justify-content-between">
+                <mat-form-field class="mr-3">
+                  <mat-label>Дата отлова</mat-label>
+                  <input formControlName="captureDate" matInput [matDatepicker]="pickerCaptureDate">
+                  <mat-datepicker-toggle matSuffix [for]="pickerCaptureDate"></mat-datepicker-toggle>
+                  <mat-datepicker #pickerCaptureDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="w-100">
+                  <mat-label>Время отлова</mat-label>
+                  <input type="time" matInput formControlName="captureTime">
+                </mat-form-field>
               </div>
             </div>
           </div>
-        </div>
-      </app-animal-action-card>
-    </div>
-    <div class="col-4">
-      <mat-card>
-        <h5>Редактировать задачу:</h5>
-        <mat-card-content class="font-size-normal">
-          <form [formGroup]="dataForm">
+          <div class="mx-3">
             <mat-form-field class="w-100">
-              <mat-label>Исполнитель</mat-label>
-              <mat-select formControlName="contractor">
-                <mat-option *ngFor="let contractor of contractors" [value]="contractor">{{contractor}}</mat-option>
-              </mat-select>
+              <mat-label>Особые приметы</mat-label>
+              <input type="text" matInput formControlName="signs">
             </mat-form-field>
             <mat-form-field class="w-100">
-              <mat-label>Планируемая дата отлова</mat-label>
-              <input matInput formControlName="date" [matDatepicker]="captureDate">
-              <mat-datepicker-toggle matSuffix [for]="captureDate"></mat-datepicker-toggle>
-              <mat-datepicker #captureDate></mat-datepicker>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <mat-label>Планируемое время отлова</mat-label>
-              <mat-select formControlName="time">
-                <mat-option *ngFor="let time of timeList" [value]="time">{{time}}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field class="w-100">
-              <mat-label>Планируемый адрес отлова</mat-label>
-              <input formControlName="address" type="text" matInput placeholder="ул. Ленина, д. 47">
+              <mat-label>Место отлова</mat-label>
+              <input type="text" matInput formControlName="captureLocation">
               <mat-icon matSuffix>room</mat-icon>
             </mat-form-field>
             <mat-form-field class="w-100">
-              <mat-label>Статус</mat-label>
-              <mat-select formControlName="status">
-                <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
-              </mat-select>
+              <mat-label>ФИО исполнителя</mat-label>
+              <input type="text" matInput formControlName="contractor">
             </mat-form-field>
-          </form>
+            <div class="d-flex justify-content-end">
+              <button type="submit" mat-raised-button color="primary">Отправить на подтерждение</button>
+            </div>
+          </div>
+        </app-animal-action-card>
+      </form>
+    </div>
+    <div class="col-4">
+      <mat-card>
+        <mat-card-title>Документы</mat-card-title>
+        <mat-card-content>
+          <div class="d-flex flex-column">
+            <button mat-raised-button color="primary">Акт отлова</button>
+            <button mat-raised-button color="primary" class="mt-2">Акт осмотра и передачи животного в приют</button>
+          </div>
         </mat-card-content>
-        <mat-card-actions>
-          <button class="w-100" mat-raised-button color="primary" type="submit">Сохранить</button>
-        </mat-card-actions>
       </mat-card>
     </div>
   </div>

@@ -1,54 +1,77 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-contractor-order-detail-page',
   templateUrl: './contractor-order-detail-page.component.html',
-  styleUrls: ['./contractor-order-detail-page.component.scss']
+  styleUrls: ['./contractor-order-detail-page.component.scss'],
 })
 export class ContractorOrderDetailPageComponent implements OnInit {
-
   contractors = ['ИП "Собакофф"', 'ИП "Котофф"', 'ИП "Крокодилофф"', 'ИП "Копытофф"'];
-  dataForm = this.fb.group({
+  detailForm = this.fb.group({
+    category: this.fb.control('dogs', Validators.required),
+    gender: this.fb.control('Кобель', Validators.required),
+    color: this.fb.control('', Validators.required),
+    regPlate: this.fb.control('Нет', Validators.required),
+    behaviorBeforeTrapping: this.fb.control('Агрессивное', Validators.required),
+    captureDate: this.fb.control(new Date(), Validators.required),
+    captureTime: this.fb.control('', Validators.required),
+    signs: this.fb.control('', Validators.required),
+    captureLocation: this.fb.control('', Validators.required),
     contractor: this.fb.control('', Validators.required),
-    address: this.fb.control('', Validators.required),
-    date: this.fb.control('', Validators.required),
-    time: this.fb.control('', Validators.required),
-    status: this.fb.control('В процессе', Validators.required),
   });
-  timeList = [
-    '00:00',
-    '01:00',
-    '02:00',
-    '03:00',
-    '04:00',
-    '05:00',
-    '06:00',
-    '07:00',
-    '08:00',
-    '09:00',
-    '10:00',
-    '11:00',
-    '12:00',
-    '13:00',
-    '14:00',
-    '15:00',
-    '16:00',
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-    '22:00',
-    '23:00',
+
+  category;
+
+  categories = [
+    {
+      category: 'dogs',
+      name: 'Собака',
+      genderList: ['Кобель', 'Сучка'],
+    },
+    {
+      category: 'cats',
+      name: 'Кошка',
+      genderList: ['Кот', 'Кошка'],
+    },
   ];
-  statuses = ['В процессе', 'Выполнена', 'Ожидает подтверждения', 'Просрочена'];
+
+  colors = [
+    'Черный',
+    'Белый',
+    'Серый',
+    'Черно-белый',
+  ];
+
+  regPlates = [
+    'Нет',
+    'Бирка',
+    'Ошейник',
+    'Клеймо',
+  ];
+
+  behaviorVariants = [
+    'Агрессивное',
+    'Спокойнойе',
+    'Нервное',
+  ];
+
 
   constructor(
     private fb: FormBuilder,
+    private auth: AuthService,
   ) {
   }
 
   ngOnInit(): void {
+    this.category = this.categories[0];
+    this.detailForm.controls.category.valueChanges.subscribe((category) => {
+      this.category = this.categories.find((c) => c.category === category);
+      this.detailForm.controls.gender.setValue(this.category.genderList[0]);
+    });
+    this.detailForm.controls.contractor.setValue(this.auth.user.fullName);
   }
+
+
 }

@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { AnimalCardModule } from '../animal-card/animal-card.module';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -28,6 +29,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatButtonToggleModule,
     AnimalCardModule,
     MatGridListModule,
+    MatNativeDateModule,
   ],
 })
-export class AnimalSearchPageModule { }
+export class AnimalSearchPageModule {
+}

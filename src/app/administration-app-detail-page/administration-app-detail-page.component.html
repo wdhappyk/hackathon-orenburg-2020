@@ -59,9 +59,7 @@
             </mat-form-field>
             <mat-form-field class="w-100">
               <mat-label>Планируемое время отлова</mat-label>
-              <mat-select formControlName="time">
-                <mat-option *ngFor="let time of timeList" [value]="time">{{time}}</mat-option>
-              </mat-select>
+              <input type="time" matInput formControlName="time">
             </mat-form-field>
             <mat-form-field class="w-100">
               <mat-label>Планируемый адрес отлова</mat-label>
