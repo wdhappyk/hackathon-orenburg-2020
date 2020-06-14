@@ -79,7 +79,7 @@ export class AdministrationAppsPageComponent implements OnInit {
   }
 
   removeApplication(app: Application) {
-    this.confirmDialog.open('Вы уверены?', 'Вы действительно хотите удалить данную задачу?').subscribe((value => {
+    this.confirmDialog.open('Вы уверены?', 'Вы действительно хотите удалить данную заявку?').subscribe((value => {
       if (!value) return;
       const idx = this.applications.indexOf(app);
       this.applications.splice(idx, 1);

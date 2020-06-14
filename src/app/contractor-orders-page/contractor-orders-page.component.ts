@@ -68,7 +68,7 @@ export class ContractorOrdersPageComponent implements OnInit {
   }
 
   removeOrder(order: Order) {
-    this.confirmDialog.open('Вы уверены?', 'Вы действительно хотите удалить данную задачу?').subscribe((value => {
+    this.confirmDialog.open('Вы уверены?', 'Вы действительно хотите удалить заказ?').subscribe((value => {
       if (!value) return;
       const idx = this.orders.indexOf(order);
       this.orders.splice(idx, 1);
