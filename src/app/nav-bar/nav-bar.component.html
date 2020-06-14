@@ -12,12 +12,14 @@
         <mat-icon>list</mat-icon>
         Задачи
       </button>
-
       <button mat-button routerLink="/administration-apps">
         <mat-icon matBadge="8" matBadgeColor="accent">speaker_notes</mat-icon>
         Заявки
       </button>
-
+      <button mat-button routerLink="/contractors">
+        <mat-icon>group</mat-icon>
+        Исполнители
+      </button>
       <button mat-button routerLink="/shelters">
         <mat-icon>home</mat-icon>
         Приюты
@@ -54,9 +56,9 @@
     </button>
 
 
-<!--    <button mat-icon-button *ngIf="auth.isAuth" (click)="signOut()">-->
-<!--      <mat-icon>exit_to_app</mat-icon>-->
-<!--    </button>-->
+    <!--    <button mat-icon-button *ngIf="auth.isAuth" (click)="signOut()">-->
+    <!--      <mat-icon>exit_to_app</mat-icon>-->
+    <!--    </button>-->
     <button mat-icon-button *ngIf="!auth.isAuth" (click)="openSignInDialog()">
       <mat-icon>login</mat-icon>
     </button>

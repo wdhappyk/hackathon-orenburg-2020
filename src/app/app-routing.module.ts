@@ -43,6 +43,7 @@ const routes: Routes = [
     path: 'administration-task-detail',
     loadChildren: () => import('./administration-task-detail-page/administration-task-detail-page.module').then(m => m.AdministrationTaskDetailPageModule),
   },
+  { path: 'contractors', loadChildren: () => import('./contractors-page/contractors-page.module').then(m => m.ContractorsPageModule) },
   {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
