@@ -74,4 +74,13 @@ export class ContractorOrderDetailPageComponent implements OnInit {
   }
 
 
+  capturePrint() {
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    document.body.append(iframe);
+    iframe.src = '/assets/docs/act-capture.html';
+    iframe.onload = () => {
+      iframe.contentWindow.print();
+    };
+  }
 }
