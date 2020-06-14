@@ -1,1 +1,12 @@
-<p>photo-viewer works!</p>
+<div class="screen" [ngStyle]="{ backgroundImage: 'url(' + selected + ')' }"></div>
+<div class="photos">
+  <div class="photos-container">
+    <div
+      class="photo"
+      *ngFor="let photo of photoList"
+      [ngStyle]="{ backgroundImage: 'url(' + photo + ')' }"
+      [class.selected]="selected === photo"
+      (click)="selected = photo"
+    ></div>
+  </div>
+</div>
