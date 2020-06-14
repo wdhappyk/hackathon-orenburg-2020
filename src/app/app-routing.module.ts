@@ -35,7 +35,14 @@ const routes: Routes = [
     path: 'map',
     loadChildren: () => import('./map-page/map-page.module').then(m => m.MapPageModule),
   },
-  { path: 'administration-app-detail', loadChildren: () => import('./administration-app-detail-page/administration-app-detail-page.module').then(m => m.AdministrationAppDetailPageModule) },
+  {
+    path: 'administration-app-detail',
+    loadChildren: () => import('./administration-app-detail-page/administration-app-detail-page.module').then(m => m.AdministrationAppDetailPageModule),
+  },
+  {
+    path: 'administration-task-detail',
+    loadChildren: () => import('./administration-task-detail-page/administration-task-detail-page.module').then(m => m.AdministrationTaskDetailPageModule),
+  },
   {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
