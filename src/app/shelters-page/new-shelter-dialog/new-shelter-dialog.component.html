@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title>Новый приют</h2>
+  <mat-dialog-content>
+
+    <mat-form-field class="w-100">
+      <mat-label>Название</mat-label>
+      <input formControlName="name" matInput placeholder="ООО Пушистые">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Адрес</mat-label>
+      <input formControlName="address" matInput placeholder="ул. Ленина, д. 47">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Телефоны</mat-label>
+      <input formControlName="phones" matInput placeholder="+7 (555) 555-55-55, +7 (123) 443-23-43">
+    </mat-form-field>
+    <mat-form-field class="w-100">
+      <mat-label>Руководитель</mat-label>
+      <input formControlName="director" matInput placeholder="Сидоров Иван Петрович">
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Отмена</button>
+    <button mat-raised-button color="primary" type="submit">Добавить</button>
+  </mat-dialog-actions>
+</form>

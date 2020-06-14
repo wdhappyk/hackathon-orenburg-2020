@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-between mt-4 mb-3 align-items-center">
         <h3>Приюты для животных</h3>
         <div>
-          <button mat-raised-button color="primary">Добавить</button>
+          <button mat-raised-button color="primary" (click)="openNewShelterDialog()">Добавить</button>
         </div>
       </div>
       <app-animal-action-card *ngFor="let shelter of shelters" class="py-3">

@@ -13,10 +13,13 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { NewShelterDialogComponent } from './new-shelter-dialog/new-shelter-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
-  declarations: [SheltersPageComponent],
+  declarations: [SheltersPageComponent, NewShelterDialogComponent],
   imports: [
     CommonModule,
     SheltersPageRoutingModule,
@@ -31,6 +34,8 @@ import { MatButtonModule } from '@angular/material/button';
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
   ],
 })
 export class SheltersPageModule { }
