@@ -40,13 +40,13 @@
   position: absolute;
   right: 100px;
   top: 35px;
-}
 
-.emblem__text {
-  font-size: 10px;
+  &__text {
+    font-size: 10px;
 
-  span {
-    font-size: 16px;
+    span {
+      font-size: 16px;
+    }
   }
 }
 
