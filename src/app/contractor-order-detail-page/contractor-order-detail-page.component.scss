@@ -1,0 +1,27 @@
+.info {
+  border: none;
+
+  &-row {
+    display: flex;
+  }
+
+  &-row + &-row {
+    margin-top: 6px;
+  }
+
+  &-label {
+    font-weight: 500;
+  }
+
+  span:first-child {
+    width: 30%;
+  }
+}
+
+.comment-block {
+  background: #fff;
+  color: #000;
+  border-radius: 3px;
+  padding: 10px;
+  overflow: auto;
+}
