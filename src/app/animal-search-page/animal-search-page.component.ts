@@ -2,6 +2,8 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Animal, getAnimalParams } from '../animal';
+import { AnimalDialogComponent } from './animal-dialog/animal-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 interface CategoryInfo {
   categoryName: string,
@@ -148,6 +150,7 @@ export class AnimalSearchPageComponent implements OnInit, AfterViewInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
+    private dialog: MatDialog,
   ) {
   }
 
@@ -169,5 +172,9 @@ export class AnimalSearchPageComponent implements OnInit, AfterViewInit {
     this.filterFormGroup.controls.gender.reset([]);
     this.filterFormGroup.controls.size.reset([]);
     this.filterFormGroup.controls.breed.reset([]);
+  }
+
+  openAnimalDialog() {
+    this.dialog.open(AnimalDialogComponent);
   }
 }

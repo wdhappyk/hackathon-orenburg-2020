@@ -1,4 +1,4 @@
-<mat-card class="p-0 overflow-hidden">
+<mat-card class="p-0 overflow-hidden position-relative">
   <div
     class="media"
     [class.flex-column]="small"
@@ -8,7 +8,6 @@
       class="photo"
       [class.w-100]="small"
       [class.w-50]="!small"
-
     >
       <img
         [src]="image"
@@ -21,17 +20,27 @@
             {{param.name}}: {{param.value}}
           </li>
         </ul>
+        <div style="position: absolute; right: 15px; bottom: 15px; font-size: 12px">
+          <button mat-raised-button class="mr-2">Виртуальный хозяйн</button>
+          <button mat-raised-button color="primary">Забрать домой</button>
+        </div>
       </div>
     </div>
     <div class="media-body px-3">
       <mat-card-title class="my-2" [class.text-center]="small">
         {{name}}
       </mat-card-title>
-      <ul *ngIf="!small && params" class="list-unstyled">
-        <li *ngFor="let param of params">
-          {{param.name}}: {{param.value}}
-        </li>
-      </ul>
+      <ng-container *ngIf="!small && params">
+        <ul class="list-unstyled">
+          <li *ngFor="let param of params">
+            {{param.name}}: {{param.value}}
+          </li>
+        </ul>
+        <div style="position: absolute; right: 15px; bottom: 15px; font-size: 12px">
+          <button mat-raised-button class="mr-2">Виртуальный хозяйн</button>
+          <button mat-raised-button color="primary">Забрать домой</button>
+        </div>
+      </ng-container>
     </div>
   </div>
 </mat-card>

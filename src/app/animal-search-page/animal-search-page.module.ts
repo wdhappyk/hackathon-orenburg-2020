@@ -13,10 +13,12 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { AnimalCardModule } from '../animal-card/animal-card.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AnimalDialogComponent } from './animal-dialog/animal-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
-  declarations: [AnimalSearchPageComponent],
+  declarations: [AnimalSearchPageComponent, AnimalDialogComponent],
   imports: [
     CommonModule,
     AnimalSearchPageRoutingModule,
@@ -30,6 +32,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     AnimalCardModule,
     MatGridListModule,
     MatNativeDateModule,
+    MatDialogModule,
   ],
 })
 export class AnimalSearchPageModule {
