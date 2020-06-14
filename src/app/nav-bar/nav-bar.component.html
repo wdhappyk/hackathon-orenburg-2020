@@ -33,6 +33,13 @@
       </button>
     </ng-container>
 
+    <ng-container *ngIf="auth.isEmployeeOfShelter()">
+      <button mat-button routerLink="/shelter-animals">
+        <mat-icon>pets</mat-icon>
+        Животные приюта
+      </button>
+    </ng-container>
+
 
     <button mat-button routerLink="/map">
       <mat-icon>map</mat-icon>

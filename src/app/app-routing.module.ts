@@ -52,6 +52,10 @@ const routes: Routes = [
     loadChildren: () => import('./contractor-order-detail-page/contractor-order-detail-page.module').then(m => m.ContractorOrderDetailPageModule),
   },
   {
+    path: 'shelter-animals',
+    loadChildren: () => import('./shelter-animals-page/shelter-animals-page.module').then(m => m.ShelterAnimalsPageModule),
+  },
+  {
     path: '**',
     loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
   },
