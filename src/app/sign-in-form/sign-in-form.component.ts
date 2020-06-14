@@ -86,7 +86,6 @@ export class SignInFormComponent implements OnInit {
 
   setCode(code: string) {
     this.code = code;
-    console.log(code);
   }
 
   private showSuccessMessage() {
