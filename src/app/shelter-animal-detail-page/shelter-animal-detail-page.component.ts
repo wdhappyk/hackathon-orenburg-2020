@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
 interface HistoryItem {
@@ -79,7 +79,6 @@ export class ShelterAnimalDetailPageComponent implements OnInit {
       this.category = this.categories.find((c) => c.category === category);
       this.detailForm.controls.gender.setValue(this.category.genderList[0]);
     });
-    this.detailForm.controls.contractor.setValue(this.auth.user.fullName);
   }
 
 

@@ -55,6 +55,45 @@
             </div>
           </div>
         </app-animal-action-card>
+        <div class="mt-4">
+          <mat-card-content>
+            <div class="row no-gutters">
+              <div class="col-4">
+                <mat-card class="p-0">
+                  <mat-card-content>
+                    <mat-selection-list #history [multiple]="false" class="p-0">
+                      <mat-list-option *ngFor="let card of cardHistory" style="font-size: 14px">
+                        {{card.date | date:'dd.MM.yyyy'}} {{card.name}}
+                      </mat-list-option>
+                    </mat-selection-list>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div class="col-8 pl-3">
+                <mat-card>
+                  <h5>Поступление</h5>
+                  <mat-card-content>
+                    <mat-form-field class="d-block">
+                      <mat-label>Кто доставил</mat-label>
+                      <mat-select>
+                        <mat-option *ngFor="let contractor of contractorsList"
+                                    [value]="contractor">{{contractor}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="w-100">
+                      <mat-label>Дата поступления</mat-label>
+                      <input matInput [matDatepicker]="pickerReceiptDateHistory">
+                      <mat-datepicker-toggle matSuffix [for]="pickerReceiptDateHistory"></mat-datepicker-toggle>
+                      <mat-datepicker #pickerReceiptDateHistory></mat-datepicker>
+                    </mat-form-field>
+                    <button class="w-100" mat-button color="primary">Акт первичного осмотра</button>
+                    <button class="w-100 mt-2" mat-raised-button color="primary">Сохранить</button>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+          </mat-card-content>
+        </div>
       </form>
     </div>
     <div class="col-4">
