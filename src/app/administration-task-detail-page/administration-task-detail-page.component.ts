@@ -8,11 +8,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class AdministrationTaskDetailPageComponent implements OnInit {
   contractors = ['ИП "Собакофф"', 'ИП "Котофф"', 'ИП "Крокодилофф"', 'ИП "Копытофф"'];
-  assigneeForm = this.fb.group({
+  dataForm = this.fb.group({
     contractor: this.fb.control('', Validators.required),
     address: this.fb.control('', Validators.required),
     date: this.fb.control('', Validators.required),
     time: this.fb.control('', Validators.required),
+    status: this.fb.control('В процессе', Validators.required),
   });
   timeList = [
     '00:00',
@@ -40,6 +41,7 @@ export class AdministrationTaskDetailPageComponent implements OnInit {
     '22:00',
     '23:00',
   ];
+  statuses = ['В процессе', 'Выполнена', 'Ожидает подтверждения', 'Просрочена'];
 
   constructor(
     private fb: FormBuilder,

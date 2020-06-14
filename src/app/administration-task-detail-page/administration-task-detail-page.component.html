@@ -38,7 +38,7 @@
       <mat-card>
         <h5>Редактировать задачу:</h5>
         <mat-card-content class="font-size-normal">
-          <form [formGroup]="assigneeForm">
+          <form [formGroup]="dataForm">
             <mat-form-field class="w-100">
               <mat-label>Исполнитель</mat-label>
               <mat-select formControlName="contractor">
@@ -61,6 +61,12 @@
               <mat-label>Планируемый адрес отлова</mat-label>
               <input formControlName="address" type="text" matInput placeholder="ул. Ленина, д. 47">
               <mat-icon matSuffix>room</mat-icon>
+            </mat-form-field>
+            <mat-form-field class="w-100">
+              <mat-label>Статус</mat-label>
+              <mat-select formControlName="status">
+                <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+              </mat-select>
             </mat-form-field>
           </form>
         </mat-card-content>
