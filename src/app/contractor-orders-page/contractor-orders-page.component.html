@@ -27,7 +27,7 @@
           </div>
           <div class="col-1">
             <mat-menu #actionMenu="matMenu">
-              <button mat-menu-item>Действие</button>
+              <button mat-menu-item routerLink="/contractor-order-detail">Подробнее</button>
               <mat-divider></mat-divider>
               <button mat-menu-item (click)="removeOrder(app)">Удалить</button>
             </mat-menu>
@@ -38,7 +38,7 @@
         </div>
       </app-animal-action-card>
       <p *ngIf="filteredOrders.length === 0" class="text-secondary text-center my-3">
-        Заявок нет.
+        Заказов нет.
       </p>
     </div>
     <div class="col-4">
